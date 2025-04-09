@@ -1,0 +1,66 @@
+[
+    {
+      "id": 1,
+      "title": "Vintage Leica M3 Camera",
+      "description": "Handcrafted brown leather backpack perfect for travel and daily use.",
+      "currentBidPrice": 2850,
+      "timeLeft": "2 Days left",
+      "bidsCount": 5,
+      "image": "https://i.ibb.co.com/XrtfN0bT/Bid1-min.png"
+    },
+    {
+      "id": 2,
+      "title": "1965 Gibson SG Standard Electric Guitar",
+      "description": "Over-ear noise-cancelling headphones with 20 hours of battery life.",
+      "currentBidPrice": 1036,
+      "timeLeft": "4 Days left",
+      "bidsCount": 12,
+      "image": "https://i.ibb.co.com/NdnCNZ46/Bid2-min.png"
+    },
+    {
+      "id": 3,
+      "title": "Original Apple Macintosh 128K (1984)",
+      "description": "Includes 620 classic games and two wired controllers.",
+      "currentBidPrice": 1865,
+      "timeLeft": "1 Days left",
+      "bidsCount": 8,
+      "image": "https://i.ibb.co.com/DHGzmSwN/Bid3-min.png"
+    },
+    {
+      "id": 4,
+      "title": "Rolex Submariner 16610",
+      "description": "Elegant white and blue vase crafted by local artists.",
+      "currentBidPrice": 2514,
+      "timeLeft": "2 Days left",
+      "bidsCount": 3,
+      "image": "https://i.ibb.co.com/0Rsc3xHb/Bid4-min.png"
+    },
+    {
+      "id": 5,
+      "title": "First Edition 'The Great Gatsby' by F. Scott Fitzgerald",
+      "description": "Water-resistant fitness tracker with heart rate and sleep monitor.",
+      "currentBidPrice": 999,
+      "timeLeft": "3 Days left",
+      "bidsCount": 10,
+      "image": "https://i.ibb.co.com/HTfHPDJP/Bid6-min.png"
+    },
+    {
+      "id": 6,
+      "title": "Mid-Century Modern Eames Lounge Chair",
+      "description": "Durable and lightweight helmet with adjustable straps and vents.",
+      "currentBidPrice": 75,
+      "timeLeft": "2 Days left",
+      "bidsCount": 4,
+      "image": "https://i.ibb.co.com/bMj1D6Ss/Bid5-min.png"
+    },
+    {
+      "id": 7,
+      "title": "Banksy Original Screen Print",
+      "description": "Touch-sensitive lamp with adjustable brightness and color temperature.",
+      "currentBidPrice": 1840,
+      "timeLeft": "7 Days left",
+      "bidsCount": 6,
+      "image": "https://i.ibb.co.com/Ds0YFkN/Bid7-min.png.jpg"
+    }
+  ]
+  
