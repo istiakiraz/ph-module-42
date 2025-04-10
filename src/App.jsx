@@ -3,16 +3,41 @@ import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Items from "./components/Items/Items";
+import { FaRegHeart } from "react-icons/fa";
+import { TbXboxX } from "react-icons/tb";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
+  const [favoriteList, setFavoriteList] = useState([]);
+  const [amountSum, setAmountSum] = useState(0); 
+
+ 
+  const handleFavorite = (item) => {
+    setFavoriteList([...favoriteList, item]);
+    handleAmountSum(item.currentBidPrice); 
+    toast("🦄 Item Added to your Favorite Lists")
+  };
+
+  
+  const removeFromFavorites = (id, price) => {
+    setFavoriteList(favoriteList.filter(item => item.id !== id));
+    setAmountSum(amountSum - price); 
+    toast.info("Remove Item to your Favorite Lists")
+  };
+
+  const handleAmountSum = (amount) => {
+    setAmountSum(amountSum + amount);
+  };
+
   return (
     <>
       <div className="bg-[#ebf0f5]">
-        <Navbar></Navbar>
-        <Header></Header>
-        <div className="w-10/12 mx-auto">
+      <Navbar></Navbar>
+      <Header></Header>
+        <div className="w-10/12 mx-auto mb-14">
           <div className="mt-[8.25rem] mb-[2rem]">
-            <h1 className="text-[2rem] text-[#0E2954] ">Active Auctions</h1>
+            <h1 className="text-[2rem] text-[#0E2954]">Active Auctions</h1>
             <p className="text-gray-600 text-xl">
               Discover and bid on extraordinary items
             </p>
@@ -20,161 +45,51 @@ function App() {
 
           <div className="flex gap-6">
             <div className="w-[70%]">
-              <Items></Items>
+              <Items handleFavorite={handleFavorite}
+                removeFromFavorites={removeFromFavorites} ></Items>
+              <ToastContainer />
             </div>
 
             <div className="w-[30%]">
-              <ul className="list bg-base-100 rounded-box shadow-md">
-                <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
-                  Most played songs this week
+              <ul className="list bg-base-100 rounded-2xl">
+                <li className="text-3xl font-semibold text-[#0E2954] flex justify-center items-center gap-2 border-b border-gray-300 pb-8 pt-8">
+                  <span>
+                    <FaRegHeart size={20} />
+                  </span>{" "}
+                  <span>Favorite Items</span>
                 </li>
-
-                <li className="list-row">
-                  <div>
-                    <img
-                      className="size-10 rounded-box"
-                      src="https://img.daisyui.com/images/profile/demo/1@94.webp"
-                    />
-                  </div>
-                  <div>
-                    <div>Dio Lupa</div>
-                    <div className="text-xs uppercase font-semibold opacity-60">
-                      Remaining Reason
+                {favoriteList.map((listed) => (
+                  <li key={listed.id} className="list-row">
+                    <div>
+                      <img className="size-18 object-cover" src={listed.image} />
                     </div>
-                  </div>
-                  <button className="btn btn-square btn-ghost">
-                    <svg
-                      className="size-[1.2em]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <path d="M6 3L20 12 6 21 6 3z"></path>
-                      </g>
-                    </svg>
-                  </button>
-                  <button className="btn btn-square btn-ghost">
-                    <svg
-                      className="size-[1.2em]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                      </g>
-                    </svg>
-                  </button>
-                </li>
-
-                <li className="list-row">
-                  <div>
-                    <img
-                      className="size-10 rounded-box"
-                      src="https://img.daisyui.com/images/profile/demo/4@94.webp"
-                    />
-                  </div>
-                  <div>
-                    <div>Ellie Beilish</div>
-                    <div className="text-xs uppercase font-semibold opacity-60">
-                      Bears of a fever
+                    <div>
+                      <div className="truncate w-75 text-xl font-semibold">
+                        {listed.title}
+                      </div>
+                      <br />
+                      <div className="text-xl space-x-6">
+                        <span>${listed.currentBidPrice}</span>{" "}
+                        <span>Bids: {listed.bidsCount}</span>
+                      </div>
                     </div>
-                  </div>
-                  <button className="btn btn-square btn-ghost">
-                    <svg
-                      className="size-[1.2em]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
+                    <button
+                      onClick={() => removeFromFavorites(listed.id, listed.currentBidPrice)}
+                      className="btn btn-square hover:bg-red-100 btn-ghost"
                     >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <path d="M6 3L20 12 6 21 6 3z"></path>
-                      </g>
-                    </svg>
-                  </button>
-                  <button className="btn btn-square btn-ghost">
-                    <svg
-                      className="size-[1.2em]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                      </g>
-                    </svg>
-                  </button>
-                </li>
+                      <span>
+                        <TbXboxX size={25} />
+                      </span>
+                    </button>
+                  </li>
+                ))}
 
-                <li className="list-row">
-                  <div>
-                    <img
-                      className="size-10 rounded-box"
-                      src="https://img.daisyui.com/images/profile/demo/3@94.webp"
-                    />
-                  </div>
-                  <div>
-                    <div>Sabrino Gardener</div>
-                    <div className="text-xs uppercase font-semibold opacity-60">
-                      Cappuccino
-                    </div>
-                  </div>
-                  <button className="btn btn-square btn-ghost">
-                    <svg
-                      className="size-[1.2em]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <path d="M6 3L20 12 6 21 6 3z"></path>
-                      </g>
-                    </svg>
-                  </button>
-                  <button className="btn btn-square btn-ghost">
-                    <svg
-                      className="size-[1.2em]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                      </g>
-                    </svg>
-                  </button>
-                </li>
+                <div>
+                  <h1 className="flex justify-center gap-12 text-2xl p-8 font-semibold">
+                    <span>Total bids Amount</span>
+                    <span>${amountSum}</span>
+                  </h1>
+                </div>
               </ul>
             </div>
           </div>
@@ -186,3 +101,4 @@ function App() {
 }
 
 export default App;
+

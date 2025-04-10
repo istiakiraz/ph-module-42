@@ -6,7 +6,7 @@ const Header = () => {
             <div
   className="hero h-[45.625rem]"
   style={{
-    backgroundImage: "url(https://github.com/ProgrammingHero1/B11A7-Simple-React-Assignment/blob/main/assets/Banner-min.jpg?raw=true)",
+    backgroundImage: "url(https://i.ibb.co.com/ksJVGw8n/Banner-min.jpg)",
   }}>
   <div className="hero-overlay"></div>
   <div className=" text-neutral-content w-10/12">
