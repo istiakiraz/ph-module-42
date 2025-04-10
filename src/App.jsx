@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-[#ebf0f5]">
+      <div className="bg-[#ebf0f5] fontFamily ">
         <Navbar></Navbar>
         <Header></Header>
         <div className="w-10/12 mx-auto mb-14">
